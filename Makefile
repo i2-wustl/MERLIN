@@ -5,7 +5,6 @@
 
 # version information
 VERSION = 1.1.2
-PSVERSION = 0.6.10
 
 # default installation directory
 INSTALLDIR=/usr/local/bin
@@ -38,12 +37,11 @@ MERLINX = $(BINDIR)/minx
 MERLINREG = $(BINDIR)/merlin-regress
 MERLINOFF = $(BINDIR)/merlin-offline
 MERLINXOFF = $(BINDIR)/minx-offline
-PEDSTATS = $(BINDIR)/pedstats
 PEDWIPE = $(BINDIR)/pedwipe
 PEDMERGE = $(BINDIR)/pedmerge
 HAPMAPCONVERTER = $(BINDIR)/hapmapConverter
 EXECUTABLES = $(MERLIN) $(MERLINX) $(MERLINREG) $(MERLINOFF) $(MERLINXOFF) \
-              $(PEDSTATS) $(PEDWIPE) $(PEDMERGE) $(HAPMAPCONVERTER)
+              $(PEDWIPE) $(PEDMERGE) $(HAPMAPCONVERTER)
 
 # MERLIN File Set
 MERLINBASE = merlin/AssociationAnalysis merlin/FastAssociation \
@@ -178,12 +176,6 @@ $(MERLINOFF) :  $(LIBFILE) $(PDFLIB) $(OFFOBJ) $(CLUSTEROBJ)
 $(MERLINXOFF) :  $(LIBFILE) $(PDFLIB) $(OFFXOBJ) $(CLUSTEROBJ)
 	 $(CXX) $(CFLAGS) -o $@ $(OFFXOBJ) $(CLUSTERXOBJ) $(PDFLIB) $(LIBFILE) -lm -lz
 
-$(PEDSTATS) : pedstats-$(PSVERSION).tar.gz
-	gunzip -c pedstats-$(PSVERSION).tar.gz | tar -xf - 
-	cd pedstats-$(PSVERSION) ; $(MAKE) executables/pedstats
-	cp pedstats-$(PSVERSION)/executables/pedstats executables
-	rm -rf pedstats-$(PSVERSION)
-
 $(PEDWIPE) : $(LIBFILE) extras/pedwipe.cpp 
 	$(CXX) $(CFLAGS) -o $@ extras/pedwipe.cpp $(LIBFILE) -lm -lz
 
@@ -269,7 +261,6 @@ archive : clean
 	mkdir -p merlin-$(VERSION)
 	cp -R LICENSE.twister README Makefile ChangeLog extras merlin-$(VERSION)
 	cp -R clusters merlin regress offline libsrc pdf examples merlin-$(VERSION)
-	cp -R pedstats-$(PSVERSION).tar.gz merlin-$(VERSION)
 	tar -cvf merlin-$(VERSION).tar merlin-$(VERSION) 
 	gzip -f --best merlin-$(VERSION).tar
 	rm -rf merlin-$(VERSION)
