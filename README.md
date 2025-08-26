@@ -1,6 +1,6 @@
 # MERLIN
     
-An original copy of original [MERLN][0] downloaded from:
+An original copy of original [MERLIN][0] downloaded from:
     
 https://csg.sph.umich.edu/abecasis/Merlin/download/merlin-1.1.2.tar.gz
     
