@@ -1,3 +1,12 @@
+# MERLIN
+    
+An original copy of original [MERLN][0] downloaded from:
+    
+https://csg.sph.umich.edu/abecasis/Merlin/download/merlin-1.1.2.tar.gz
+    
+# Original README
+
+```
 MERLIN - Multipoint Engine for Rapid Likelihood Inference
 (c) 2000 - 2002 Goncalo Abecasis
 
@@ -200,3 +209,6 @@ Nature Genetics 30:97-101
 
 Goncalo Abecasis
 goncalo@umich.edu
+```
+
+[0]: https://csg.sph.umich.edu/abecasis/Merlin/
